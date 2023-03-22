@@ -1,0 +1,57 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: academico-postgres
+    image: postgres
+    restart: always
+    user: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_NAME: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q"]
+
+  pg_admin:
+    container_name: academico-postgres-admin
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@root
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5051:80"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  django:
+    container_name: academico-django
+    build: .
+    command: >
+      bash -c "python manage.py migrate
+      && python manage.py populate_db
+      && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: "db"
+      POSTGRES_NAME: postgres
+      POSTGRES_PORT: 5432
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pg_data:
