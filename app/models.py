@@ -19,6 +19,9 @@ class Student(models.Model):
         Subject, related_name='students', blank=True
     )
 
+    def __str__(self):
+        return f'Student {self.name}'
+
     def age_is_valid(self):
         return self.age is not None
 
@@ -44,6 +47,9 @@ class Teacher(models.Model):
     students = models.ManyToManyField(
         Student, related_name='teachers', blank=True
     )
+
+    def __str__(self):
+        return f'Teacher {self.name}'
 
     def age_is_valid(self):
         return (self.age is not None) and (self.age > 18)

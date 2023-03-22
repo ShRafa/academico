@@ -1,10 +1,11 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from app.models import Grade, Student, Teacher
+from app.models import Grade, School, Student, Teacher
 from app.serializers.grade_serializer import GradeSerializer
 from app.serializers.student_serializer import StudentSerializer
 from app.serializers.teacher_serializer import TeacherSerializer
+from app.serializers.school_serializer import SchoolSerializer
 
 
 @csrf_exempt
@@ -152,3 +153,35 @@ def delete_grade(request, id):
     grade.delete()
 
     return JsonResponse({}, status=202)
+
+
+@csrf_exempt
+def get_school(request):
+    school = School.objects.all()
+    serializer = SchoolSerializer(school, many = True)
+    return JsonResponse(serializer.data, safe = False, status=200)
+
+
+@csrf_exempt
+def create_school(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'undefined method'}, status=404)
+    
+    name = request.POST['name']
+    city = request.POST['city']
+
+    school = School.objects.create(name=name, city=city)
+
+    serializer = SchoolSerializer(school, many=False)
+    return JsonResponse(serializer.data, safe=True, status=201)
+
+
+def delete_school(request, id):
+    try:
+        School.objects.get(id=id).delete()
+    except School.DoesNotExist:
+        return JsonResponse({'erro':'School does not exist'}, safe=True, status=404)
+    except:
+        return JsonResponse({'error':'indefined error'}, safe=True, status=404)
+
+    return JsonResponse({}, safe=True, status=202)

@@ -14,4 +14,7 @@ urlpatterns = [
     path('grades/', views.get_grades),
     path('grade/create/', views.create_grade),
     path('grade/delete/<int:id>', views.delete_grade),
+    path('school/', views.get_school),
+    path('school/create/', views.create_school),
+    path('school/delete/<int:id>', views.delete_school),
 ]
