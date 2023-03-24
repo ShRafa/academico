@@ -6,9 +6,15 @@ class School(models.Model):
     name = models.TextField(max_length=50)
     city = models.TextField(max_length=50)
 
+    def __str__(self):
+        return f'School: {self.name} located at: {self.city}'
+
 
 class Subject(models.Model):
     name = models.TextField(max_length=50)
+
+    def __str__(self):
+        return f'Subject {self.name}'
 
 
 class Student(models.Model):
@@ -78,6 +84,9 @@ class Grade(models.Model):
     for_subject = models.ForeignKey(
         Subject, on_delete=models.CASCADE, null=True, blank=True
     )
+
+    def __str__(self):
+        return f'Grade: {self.value}'
 
     def value_is_valid(self):
         return 0 <= self.value <= 10
