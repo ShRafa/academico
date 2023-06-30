@@ -16,8 +16,8 @@ Importante: Mesmo que o backend já esteja concluído, o objetivo é manter cons
 
 O projeto está sendo desenvolvido em Django (concluído) + React.js (não concluído) e compilado em Docker (concluído)
 
-As depedências do backend ficam em requirements.txt
-AS dependências do frontend ainda está em desenvimento,
+As depedências do backend ficam em requirements.txt.
+As dependências do frontend ainda está em desenvimento,
 
 O projeto pode ser executado de duas formas:
 1. Via terminal Linux
@@ -30,7 +30,7 @@ Embora um pouco mais complexo, esta forma concede ao usuário mais acesso, visib
 
 ### Para este modelo, sigaos passos a seguir:
 
-Com sua virtualenv, na raíz do projeto rode instale as dependências do backend com
+Com sua virtualenv, na raíz do projeto instale as dependências do backend com
 `pip install -r requirements.txt`
 
 Com os pacotes todos instalados, na raiz do projeto rode:
