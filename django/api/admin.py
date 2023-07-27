@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from app.models import School, Student, Subject, Grade, Teacher
+from api.models import School, Student, Subject, Grade, Teacher
 
 @admin.register(School)
 class Schooladmin(admin.ModelAdmin):

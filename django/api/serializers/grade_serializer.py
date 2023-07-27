@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from app.models import Grade
+from api.models import Grade
 
 
 class GradeSerializer(serializers.ModelSerializer):

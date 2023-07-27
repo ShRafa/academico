@@ -1,10 +1,10 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from app.models import Grade, Student, Teacher
-from app.serializers.grade_serializer import GradeSerializer
-from app.serializers.student_serializer import StudentSerializer
-from app.serializers.teacher_serializer import TeacherSerializer
+from api.models import Grade, Student, Teacher
+from api.serializers.grade_serializer import GradeSerializer
+from api.serializers.student_serializer import StudentSerializer
+from api.serializers.teacher_serializer import TeacherSerializer
 
 
 @csrf_exempt
