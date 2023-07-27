@@ -1,3 +1,6 @@
-myenv/
+myvenv/*
 __pycache__/
 .pyc
+*.pyc
+.cpython
+*.cpython*
