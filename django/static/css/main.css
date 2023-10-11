@@ -1,7 +1,17 @@
-body{
-	background-color: hsl(0, 100%, 50%);
+h1{
+	color:hsl(117, 90%, 26%);
 }
 
-h1,h2,h3,h4,h5,h6{
-	color:hsl(0, 0%, 30%);
+#fixed-header{
+	position: fixed;
+	top: 0;
+    left: 0;
+    width: 100%;
+	z-index: 1000;
+}
+
+
+#img-header{
+	width: auto;
+	height: auto;	
 }

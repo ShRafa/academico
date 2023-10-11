@@ -2,23 +2,38 @@
 {% load static %}
 
 <html>
-    <head>
-        <title>Academico</title>
+    <div class="main-content">
+        <div>
+            <head id="fixed-header">
+                <title>Acadêmico</title>
 
-        <meta 
-            name="viewport" 
-            content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" 
-        />
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
 
-        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    </head>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <body>
-        <div class="container">
-            <h1> Teste </h1>
-            {% block content %}
+                <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
-            {% endblock content %}
+                <img src="{% static 'images/university.jpg' %}">
+                <h1 style="display: inline-block; float: left"> 
+                    Botão para home
+                </h1>
+            </head>
         </div>
-    </body>
+    </div>
+
+    <div>
+        <body>
+            <div class="main-header">
+                <img src="{% static 'images/university.jpg' %}" alt="Imagem de fundo">
+                <h1>Botão para home</h1>
+            </div>
+            
+            <div class="container">
+                <h1> Cursos feitos para você </h1>
+                {% block content %}
+
+                {% endblock content %}
+            </div>
+        </body>
+    </div>
 </html>
